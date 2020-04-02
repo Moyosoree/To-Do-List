@@ -1,0 +1,291 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <style>
+            body {
+    background: url('./img/bgimage.jpg') center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+}
+.overlay {
+    background-color: rgb(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.title{
+    padding: 30px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    position: relative;
+    right: 40px;
+    margin-bottom: 10px;
+}
+.nav-item {
+    color: white;
+    padding: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: white;
+    border-bottom:2px solid white;
+    border-radius: 0%;
+}
+ .nav-item:focus, .nav-item:active ,.nav-item.active {
+     color: #22b81f!important;
+     border-bottom: 2px solid #22b81f;
+     border-radius: 0%;
+     box-shadow: none;
+ }
+
+/****ToDo***/
+
+ .doing {
+     position: relative;
+     width: 100%;
+ }
+/*the input section*/
+
+input#toDoItem {
+    width: 75%;
+    max-width: 75%;
+    padding: 5px;
+    padding-right: 30px;
+    margin: 50px auto;
+    position: relative;
+    border: none;
+    border-bottom: 2px solid grey;
+    color: white;
+    background-color: rgb(0, 0, 0, 0.2);
+    outline: none;
+}
+input#toDoItem:focus {
+    background-color: rgb(0, 0, 0, 0.5);
+    border-bottom: 3px solid white;
+}
+
+input::-webkit-input-placeholder {
+    color: rgb(255, 255, 255, 0.7);
+}
+input:-moz-placeholder {
+    color: rgb(255, 255, 255, 0.7);
+}
+input::-moz-placeholder {
+    color: rgb(255, 255, 255, 0.7);
+}
+input:-ms-input-placeholder {
+    color: rgb(255, 255, 255, 0.7);
+}
+
+.addbtn {
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: medium;
+    color: white;
+    position: relative;
+    right: 42px;
+    bottom: 4px;
+}
+
+.addbtn:hover, .addbtn:focus, .addbtn:active {
+    color: #22b81f;
+    box-shadow: none;
+}
+/***** To do Item List*****/
+
+.item-list {
+    height: 50vh;
+    max-height: 50vh;
+    width: 90%;
+    margin: 0 auto;
+    overflow-y: auto;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+.item-list li {
+    padding: 8px;
+    word-wrap: break-word;
+    cursor: pointer;
+    border-bottom: 1px solid grey;
+    position: relative;
+    padding-right: 80px;
+}
+
+.item-list li .buttons {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.item-list li .buttons button {
+    width: 37.5px;
+    height: 40px;
+    background-color: rgb(0, 0, 0, 0.0);
+    position: relative;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.item-list li .buttons button:last-of-type::before {
+    content: '';
+    width: 0.75px;
+    height: 25px;
+    position: absolute;
+    top: 7.5px;
+    left: 0;
+    background-color: grey;
+    
+}
+
+
+.item-list li .buttons button.remove:hover,
+.item-list li .buttons button.remove:focus, 
+.item-list li .buttons button.remove:active {
+    color: red;
+    box-shadow: none;
+    outline: none;
+}
+
+.item-list li .buttons button.complete:hover, 
+.item-list li .buttons button.complete:focus,
+.item-list li .buttons button.complete:active {
+    color: #22b81f;
+    box-shadow: none;
+    outline: none;
+}
+
+
+
+
+
+/**** Accomplished*****/
+
+.item-list#completed{
+    height: 65vh;
+    max-height: 65vh;
+    margin: 50px auto 16px;
+    width: 80%;
+    max-width: 80%;
+    background: rgb(0, 0, 0, 0.4);
+    overflow-y: auto;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+/* 
+.item-list#completed li .buttons button.complete {
+    display: none;
+}
+
+.item-list#completed li .buttons button.remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+} */
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>To-Do</title>
+        <link rel="stylesheet" href="./bootstrap/bootstrap-4.4.1-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="./bootstrap/bootstrap-4.4.1-dist/css/bootstrap.nin.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!---Home Page-->
+        <div class="overlay"></div>
+        <!---Title-->
+        <div class="title">
+            <h4>To<span style="color: rgb(255, 20, 98);"></Doc></span></h4>
+        </div>
+        <div class="navbar">
+            <nav class="ml-auto">
+                <span>
+                    <button class="btn nav-item" onclick="openPage('Homepage', this)" id="defaultOpen">
+                    ---Home</button>
+                </span>
+                <span>
+                    <button class="btn nav-item" onclick="openpage('StatsPage', this)">Stats</button>
+                </span>
+            </nav>
+        </div>
+        <div id="HomePage" class="content">
+            <div class="col-md-6">
+                <div class="pl-3">
+                    <div id="myToDo" class="doing text-center">
+                        <input type="text" id="toDoItem" placeholder="Plans for the day?">
+                        <button id="addbtn" class="btn addbtn text-center">&plus;</button>
+                    </div>
+                    <div class="item-list">
+                        <ul id="toDoItemList">
+                            <!--
+                                <li>
+                                    Wake up
+                                    <span class="buttons">
+                                        <button class="remove">&times;</button>
+                                    </span>
+                                </li>
+                            -->
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="item-list" id="completed">
+                <h5 class="p-3" style="border-bottom: 2px solid #25992f;">
+                Let's see what we did today</h5>
+                <div>
+                    <ul id="accomplished">
+                        <!----
+                            <li>
+                                Wake up
+                                <span class="buttons">
+                                    <button class="remove">4times;</button>
+                    </ul>
+                </div>
+                <!- End of home page -->
+                <!---Stats Page-->
+                <div id="StatsPage" class="content">
+
+                </div>
+                <!---End of Stats page-->
+                <!---Javascript-->
+                <script src="js/main.js"></script>
+                <script>
+                    function openPage(pageName, elmt) {
+                        var 1, content, tablinks;
+                        content - document.getElementsByClassName("content");
+                        for (1 = 0; 1 < content.length; 1++) {
+                            content[i].style.display = "none";
+                            }
+
+                            document.getElementById(pageName).style.display - "block";
+                    }
+                    // Get the element with id="defaultOpen" and click on it
+                    document.getElementById("defaultOpen").click();
+                </script>
+    </body>
+</html>
